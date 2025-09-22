@@ -15,9 +15,17 @@ public class Main {
         System.out.print("Enter the student's name:");
         String name = scanner.nextLine();
 
+        System.out.print("Enter the student's roll number:");
+        int rollNumber = scanner.nextInt();
+
+        System.out.print("Enter the student's marks:");
+        double marks = scanner.nextDouble();
+
+        System.out.println();
+
         try{
-            BufferedWriter writer = new BufferedWriter(new FileWriter("writtingExample.txt"));
-            writer.write(name);
+            BufferedWriter writer = new BufferedWriter(new FileWriter("writtingExample.txt", true));
+            writer.write(name + "\t" + rollNumber + "\t" + marks + "\n" );
             writer.close();
         }catch(Exception e){
             System.out.println("Something went wrong!");
