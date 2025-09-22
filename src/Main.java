@@ -1,3 +1,4 @@
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -14,7 +15,19 @@ public class Main {
             writer.write("Hello World!");
             writer.close();
         }catch(Exception e){
-            System.out.println(e);
+            System.out.println("Something went wrong!");
+        }
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("writtingExample.txt"));
+
+            do {
+                System.out.println(reader.readLine());
+            } while (reader.readLine() != null);
+
+            reader.close();
+        }catch(Exception e){
+            System.out.println("Something went wrong!");
         }
 
 
