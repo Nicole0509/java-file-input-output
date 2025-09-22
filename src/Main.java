@@ -34,9 +34,12 @@ public class Main {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("writtingExample.txt"));
 
-            do {
-                System.out.println(reader.readLine());
-            } while (reader.readLine() != null);
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+
 
             reader.close();
         }catch(Exception e){
