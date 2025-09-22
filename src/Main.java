@@ -2,24 +2,55 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
+
+        int rollNumber;
+        double marks;
+        String name;
 
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Student Report System With Java Streams!");
-        System.out.print("Enter the student's name:");
-        String name = scanner.nextLine();
 
-        System.out.print("Enter the student's roll number:");
-        int rollNumber = scanner.nextInt();
+        // Inserting Name
+        do{
+            System.out.print("Enter the student's name:");
+            name = scanner.nextLine().trim();
 
-        System.out.print("Enter the student's marks:");
-        double marks = scanner.nextDouble();
+            if(name.isEmpty()) {
+                System.out.println("Item name cannot be empty. Please enter a name.");
+            }
+        } while(name.trim().isEmpty());
+
+        // Inserting roll Number
+        do{
+            System.out.print("Enter the student's roll number: ");
+            try {
+                rollNumber = scanner.nextInt();
+                scanner.nextLine();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid Input. Please student's roll number: ");
+                scanner.nextLine();
+            }
+        } while(true);
+
+        // Inserting marks
+        do{
+            System.out.print("Enter the student's marks: ");
+            try {
+                marks = scanner.nextDouble();
+                scanner.nextLine();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid Input. Please student's marks: ");
+                scanner.nextLine();
+            }
+        } while(true);
 
         System.out.println();
 
@@ -39,7 +70,6 @@ public class Main {
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
             }
-
 
             reader.close();
         }catch(Exception e){
