@@ -54,27 +54,29 @@ public class Main {
 //
 //        System.out.println();
 
-        try{
-            FileOutputStream writer = new FileOutputStream("writtingExample.txt", true);
-            writer.write("Steve\t222012822\t92.0\n".getBytes());   //Here you can say variable_name.getBytes to write to file
-            writer.close();
-        }catch(Exception e){
-            System.out.println("Something went wrong!");
-        }
-
-//        try {
-//            FileInputStream reader = new FileInputStream("writtingExample.txt");
-//
-//            int i;
-//
-//            while((i = reader.read()) != -1){
-//                System.out.print((char)i);
-//            }
-//
-//            reader.close();
+//        try{
+//            FileOutputStream writer = new FileOutputStream("writtingExample.txt", true);
+//            writer.write("Steve\t222012822\t92.0\n".getBytes());   //Here you can say variable_name.getBytes to write to file
+//            writer.close();
 //        }catch(Exception e){
 //            System.out.println("Something went wrong!");
 //        }
+
+        try {
+            FileInputStream reader = new FileInputStream("C:\\Users\\nnico\\Downloads\\loanProofBRD.png");
+
+            int i;
+            int count = 0;
+
+            while((i = reader.read()) != -1 && count < 20){
+                System.out.print(i + " ");
+                count++;
+            }
+
+            reader.close();
+        }catch(Exception e){
+            System.out.println("Something went wrong!");
+        }
 
 //        scanner.close();
     }
