@@ -1,4 +1,6 @@
-import java.io.FileInputStream;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -63,19 +65,22 @@ public class Main {
 //        }
 
         try {
-            FileInputStream reader = new FileInputStream("C:\\Users\\nnico\\Downloads\\loanProofBRD.png");
+            File file = new File("C:\\Users\\nnico\\Downloads\\loanProofBRD.png");
+            BufferedImage image = ImageIO.read(file);
 
-            int i;
-            int count = 0;
+            if (image != null) {
+                System.out.println("Image successfully read!");
+                System.out.println("Width: " + image.getWidth());
+                System.out.println("Height: " + image.getHeight());
 
-            while((i = reader.read()) != -1 && count < 20){
-                System.out.print(i + " ");
-                count++;
+                int pixel = image.getRGB(0,0);  // read top-left pixel
+                System.out.println("Pixel (0,0) RGB value: " + pixel);
+            } else {
+                System.out.println("The file is not a valid image.");
             }
 
-            reader.close();
-        }catch(Exception e){
-            System.out.println("Something went wrong!");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
 //        scanner.close();
