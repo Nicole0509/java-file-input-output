@@ -1,6 +1,7 @@
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import javax.swing.*;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -65,19 +66,19 @@ public class Main {
 //        }
 
         try {
+            // Load the image into a BufferedImage
             File file = new File("C:\\Users\\nnico\\Downloads\\loanProofBRD.png");
             BufferedImage image = ImageIO.read(file);
 
-            if (image != null) {
-                System.out.println("Image successfully read!");
-                System.out.println("Width: " + image.getWidth());
-                System.out.println("Height: " + image.getHeight());
+            // Create a label to hold the image
+            JLabel label = new JLabel(new ImageIcon(image));
 
-                int pixel = image.getRGB(0,0);  // read top-left pixel
-                System.out.println("Pixel (0,0) RGB value: " + pixel);
-            } else {
-                System.out.println("The file is not a valid image.");
-            }
+            // Create a JFrame to display it
+            JFrame frame = new JFrame("View PNG Image");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.getContentPane().add(label);
+            frame.pack(); // adjusts frame size to fit the image
+            frame.setVisible(true);
 
         } catch (Exception e) {
             e.printStackTrace();
